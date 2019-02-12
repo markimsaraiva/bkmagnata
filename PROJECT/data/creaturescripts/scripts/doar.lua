@@ -3,6 +3,6 @@
 function onLogin(cid, words, param)
 file = io.open('doar.txt','r')
 doar = file:read(-1)
-doShowTextDialog(cid,7528,doar)
+doShowTextDialog(cid,8981,doar)
 file:close()
 end

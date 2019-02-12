@@ -89,7 +89,8 @@
 	<talkaction words="!party" event="script" value="party.lua"/>
 	<talkaction words="!changeoutfit" script="guild.lua"/>
 	<talkaction words="!glist" script="guildlist.lua"/>
-     <talkaction words="!rank" script="ranks.lua" />	<talkaction words="!bp" script="backpack.lua"/>
+     <talkaction words="!rank" script="ranks.lua" />	
+     <talkaction words="!bp" script="backpack.lua"/>
 	<talkaction words="!spells" script="spells.lua"/>
        	<talkaction words="!tp" script="teleportvip.lua"/>
         <talkaction words="!guildfrags;/guildfrags;!myhonor;/myhonor" event="script" value="GuildFragsRank.lua"/>

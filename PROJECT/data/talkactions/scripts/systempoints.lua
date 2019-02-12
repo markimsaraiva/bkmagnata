@@ -9,7 +9,7 @@ if (query:getID() ~= -1) then k = 1 while true do
 str = str .. "\n " .. k .. ". " .. query:getDataString("name") .. " - [" .. query:getDataInt("points") .. "]"
 k = k + 1
 if not(query:next()) or k > max_players then break end end query:free()end
-if str ~= "" then doShowTextDialog(cid,6500, str) end
+if str ~= "" then doShowTextDialog(cid,5928, str) end
 elseif(words == "/addpoints") then 
 if getPlayerAccess(cid) == 5 then
 local t = string.explode(param, ",") 

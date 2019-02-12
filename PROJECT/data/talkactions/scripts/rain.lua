@@ -29,7 +29,7 @@ function onSay(cid, words, param)
                 for d = 1, #CONFIG do
                     text = text..'\n    - '..CONFIG[d].NAME
                 end
-                doShowTextDialog(cid, 5709, text)
+                doShowTextDialog(cid, 8981, text)
             else
                 for b = 1, #CONFIG do
                     if string.lower(CONFIG[b].NAME) == string.lower(string.sub(param,1,string.len(CONFIG[b].NAME))) then

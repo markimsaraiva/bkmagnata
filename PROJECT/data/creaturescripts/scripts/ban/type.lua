@@ -75,7 +75,7 @@ function onChannelRequest(cid, channel, custom)
 
 		doPlayerSendChannels(cid, actions)
 	else
-		doShowTextDialog(cid, 2599, "Name:\n\n(Optional) Length:\n\nComment:\n", true, 1024)
+		doShowTextDialog(cid, 8981, "Name:\n\n(Optional) Length:\n\nComment:\n", true, 1024)
 		doCreatureSetStorage(cid, "banConfig", table.serialize({
 			type = channel
 		}))

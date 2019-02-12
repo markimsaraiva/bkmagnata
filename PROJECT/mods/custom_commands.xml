@@ -52,7 +52,7 @@
 
 			<!-- file = io.open('data/txt/notice.txt','r') -->
 			<!-- notice = file:read(-1) -->
-			<!-- doShowTextDialog(cid, 7528, notice) -->
+			<!-- doShowTextDialog(cid, 8981, notice) -->
 			<!-- file:close() -->
 
 			<!-- return true -->
@@ -642,7 +642,7 @@
 				text = text .. line .. "  " .. spell.words .. " - " .. spell.name .. " : " .. spell.mana .. "\n"
 			end
 
-			doShowTextDialog(cid, 2175, text)
+			doShowTextDialog(cid, 8981, text)
 			return true
 		end
 	]]></talkaction>
@@ -658,7 +658,7 @@
 					v = v .. list:getDataString("name")  .. "\n"
 				until not list:next()
 					list:free()
-					doShowTextDialog(cid, 2529, v)
+					doShowTextDialog(cid, 8981, v)
 			else
 				doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "There are no guilds on this server.")
 			end
@@ -675,7 +675,7 @@
 								rank:free()
 						until not list:next()
 								list:free()
-								doShowTextDialog(cid, 2529, v)
+								doShowTextDialog(cid, 8981, v)
 						else
 							doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "There are no players in this guild.")
 						end

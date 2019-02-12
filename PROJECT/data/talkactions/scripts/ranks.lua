@@ -1,166 +1,94 @@
-function getPlayerNameByGUID2(n)           local c = db.getResult("SELECT `name` FROM `players` WHERE `id` = "..n..";")   
-        if c:getID() == -1 then   
-                return "SQL_ERROR["..n.."]"   
-        end   
-                return c:getDataString("name")   
-        end   
-   
-function onSay(cid, words, param)   
-        local max = 100   
-        local letters_to_next = 20   
-   
-local skills = {   
-        ['fist'] = 0,   
-        ['club'] = 1,   
-        ['sword'] = 2,   
-        ['axe'] = 3,   
-        ['distance'] = 4,   
-        ['shielding'] = 5,   
-        ['fishing'] = 6,   
-        ['dist'] = 4,   
-        ['shield'] = 5,   
-        ['fish'] = 6,   
-}   
-        local name_now   
-        local name = "Highscore for level\n"   
-        local rkn = 0   
-        local no_break = 0   
-                param = string.lower(param)   
-                dofile('config.lua')   
-    if param == "" or param == "level" and ( param ~= "magic" and param == "ml") and skills[param] == nil then   
-                name = name.."\n"   
-                name = name.."Rank Level - Nome do Jogador\n"   
-        local v = db.getResult("SELECT `name`, `level`, `experience` FROM `players` WHERE `group_id` <= 2 ORDER BY `experience` DESC LIMIT 0,"..(max)..";")   
-        repeat   
-                no_break = no_break +1   
-        if v:getID() == -1 then   
-        break   
-        end   
-                rkn = rkn+1   
-                name_now, l = v:getDataString("name"), string.len(v:getDataString("name"))   
-                space = ""   
-        for i=1, letters_to_next-l do   
-                space = space.." "   
-        end   
-                name = name..rkn..". "..v:getDataInt("level") .."  -  "..name_now..space.." ".."\n"    
-        if no_break >= 20 then   
-        break   
-        end   
-        until v:next() == false   
-   
-        elseif param == "magic" or param == "ml" then   
-                name = name.."\n"   
-                name = name.."Rank Magic - Nome do Jogador\n"   
-        local v = db.getResult("SELECT `name`, `level`, `maglevel` FROM `players` WHERE `group_id` <= 2 ORDER BY `maglevel` DESC LIMIT 0,"..(max)..";")   
-        repeat   
-        if v:getID() == -1 then   
-        break   
-        end   
-                rkn = rkn+1   
-                name_now, l = v:getDataString("name"), string.len(v:getDataString("name"))   
-                space = ""   
-        for i=1, letters_to_next-l do   
-                space = space.." "   
-        end   
-                name = name..rkn..". "..v:getDataInt("maglevel").."  -  "..name_now..space.." ".." ".."".."\n"    
-        until v:next() == false   
-  
-        elseif param == "mana" or param == "MANA" then   
-                name = name.."\n"   
-                name = name.."Rank Mana - Nome do Jogador\n"   
-        local v = db.getResult("SELECT `name`, `level`, `manamax` FROM `players` WHERE `group_id` <= 2 ORDER BY `manamax` DESC LIMIT 0,"..(max)..";")   
-        repeat   
-        if v:getID() == -1 then   
-        break   
-        end   
-                rkn = rkn+1   
-                name_now, l = v:getDataString("name"), string.len(v:getDataString("name"))   
-                space = ""   
-        for i=1, letters_to_next-l do   
-                space = space.." "   
-        end   
-                name = name..rkn..". "..v:getDataInt("manamax").."  -  "..name_now..space.." ".." ".."".."\n"    
-        until v:next() == false   
-  
-        elseif param == "health" or param == "hp" then   
-                name = name.."\n"   
-                name = name.."Rank Health - Nome do Jogador\n"   
-        local v = db.getResult("SELECT `name`, `level`, `healthmax` FROM `players` WHERE `group_id` <= 2 ORDER BY `healthmax` DESC LIMIT 0,"..(max)..";")   
-        repeat   
-        if v:getID() == -1 then   
-        break   
-        end   
-                rkn = rkn+1   
-                name_now, l = v:getDataString("name"), string.len(v:getDataString("name"))   
-                space = ""   
-        for i=1, letters_to_next-l do   
-                space = space.." "   
-        end   
-                name = name..rkn..". "..v:getDataInt("healthmax").."  -  "..name_now..space.." ".." ".."".."\n"    
-        until v:next() == false  
+local displayoutput = {"Level","Magic Level","Fist Fighting","Club Fighting","Sword Fighting","Axe Fighting","Distance Fighting","Shielding"}
 
-        elseif param == "frags" or param == "kills" then   
-                name = name.."\n"   
-                name = name.."Rank Frags - Nome do Jogador\n"   
-        local v = db.getResult("SELECT `p`.`name` AS `name`, COUNT(`p`.`name`) as `frags` FROM `killers` k LEFT JOIN `player_killers` pk ON `k`.`id` = `pk`.`kill_id` LEFT JOIN `players` p ON `pk`.`player_id` = `p`.`id` WHERE `k`.`unjustified` = 1 GROUP BY `name` ORDER BY `frags` DESC;") repeat   
-        if v:getID() == -1 then   
-        break   
-        end   
-                rkn = rkn+1   
-                name_now, l = v:getDataString("name"), string.len(v:getDataString("name"))   
-                space = ""   
-        for i=1, letters_to_next-l do   
-                space = space.." "   
-        end   
-                name = name..rkn..". "..v:getDataInt("frags").."  -  "..name_now..space.." ".." ".."".."\n"    
-        until v:next() == false             
-  
-    elseif param == "resets" then   
-        name = name.."Rank Resets - Nome do Jogador\n"   
-    local v = db.getResult("SELECT `player_id`, `value` FROM `player_storage` WHERE `key` = 1020 ORDER BY `value` DESC LIMIT 0,"..(max)..";")   
-    local kk = 0   
-   
-    repeat   
-    if kk == max or v:getID() == -1 then   
-    break   
-    end   
-        kk = kk+1   
-        name_now, l = getPlayerNameByGUID2(v:getDataInt("player_id")), string.len(getPlayerNameByGUID2(v:getDataInt("player_id")))   
-        space = ""   
-    for i=1, letters_to_next-l do   
-        space = space.." "   
-    end   
-    if name_now == nil then   
-        name_now = 'sql error['..v:getDataInt("player_id")..']'   
-    end   
-        name = name..kk..". "..v:getDataInt("value").."  -  "..name_now..space.." ".." ".."".."\n"    
-    until v:next() == false   
-   
-        elseif skills[param] ~= nil then   
-                name = name.."\n"   
-                name = name.."Rank "..param.." fighting - Nome do Jogador\n"   
-        local v = db.getResult("SELECT `player_id`, `value` FROM `player_skills` WHERE `skillid` = "..skills[param].." ORDER BY `value` DESC;")   
-        local kk = 0   
-   
-        repeat   
-        if kk == max or v:getID() == -1 then   
-        break   
-        end   
-                kk = kk+1   
-                name_now, l = getPlayerNameByGUID2(v:getDataInt("player_id")), string.len(getPlayerNameByGUID2(v:getDataInt("player_id")))   
-                space = ""   
-        for i=1, letters_to_next-l do   
-                space = space.." "   
-        end   
-        if name_now == nil then   
-                name_now = 'sql error['..v:getDataInt("player_id")..']'   
-        end   
-                name = name..kk..". "..v:getDataInt("value").."  -  "..name_now..space.." \n"   
-        until v:next() == false   
-        end   
-        if name ~= "Highscore\n" then    
-                 doShowTextDialog(cid, 6500, name)   
-        end   
-   
-        return true   
+local itemtype = {8981}
+
+function onSay(cid, words, param)
+    number = 1
+    param = string.lower(param)
+    skilllist = ""
+    command = TRUE
+    if param == "level" then        
+        display = 1
+    elseif param == "magic" then
+        display = 2
+    elseif param == "club" then
+        id = 1
+        display = 4
+    elseif param == "sword" then
+        id = 2
+        display = 5
+    elseif param == "axe" then
+        id = 3
+        display = 6
+    elseif param == "distance" then
+        id = 4
+        display = 7
+    elseif param == "shield" then
+        id = 5
+        display = 8
+    else 
+        error = 'Highscore Commands:\n\n!rank level\n!rank magic\n!rank fist\n!rank club\n!rank sword\n!rank axe\n!rank distance\n!rank shield\n'
+
+        doShowTextDialog(cid, 5958, error)
+        command = FALSE
+
+    end
+
+    if command ~= FALSE then
+        if display == 1 then
+            local player = db.getResult("SELECT `name`, `level` FROM `players` WHERE group_id < '2' ORDER BY `level` DESC LIMIT 50;")    
+            if(player:getID() ~= -1) then
+                while (true) do
+                    local name = player:getDataString("name")
+                    local level = player:getDataInt("level")
+
+                      skilllist = skilllist.. "\n#"..string.format("%5s",number.."  "..name.."  -  "..level)
+                    number = number + 1
+                    if not(player:next()) then
+                        break
+                    end
+                end
+                player:free()
+            end
+        elseif display == 2 then
+            local player = db.getResult("SELECT `name`, `maglevel` FROM `players` WHERE group_id < '2' ORDER BY `maglevel` DESC LIMIT 50;")
+            if(player:getID() ~= -1) then    
+                while (true) do
+                    local name = player:getDataString("name")
+                    local maglevel = player:getDataInt("maglevel")
+
+                      skilllist = skilllist.. "\n#"..string.format("%5s",number.."  "..name.."  -  "..maglevel)
+                    if not(player:next()) then
+                        break
+                    end
+                    number = number + 1
+                end
+            end
+            player:free()
+        else
+            local skills = db.getResult("SELECT `player_id`, `value`, `skillid` FROM `player_skills` WHERE `skillid` = "..id.." ORDER BY `value` DESC;")
+            while (true) do
+                local GUID = skills:getDataInt("player_id")
+                local value = skills:getDataInt("value")
+                local skillid = skills:getDataInt("skillid")
+                local player = db.getResult("SELECT `name` FROM `players` WHERE `id` = "..GUID.." and group_id < '2' ")
+                if(player:getID() ~= -1) then
+                    local name = player:getDataString("name")
+                      skilllist = skilllist.. "\n#"..string.format("%5s",number.."  "..name.."  -  "..value)
+                    number = number + 1
+                    player:free()
+                end
+                if number > 50 then
+                    break
+                end
+                    if not(skills:next()) then
+                    break
+                end
+            end
+            skills:free()
+        end
+        dialog = ""..displayoutput[display].." Highscores: \n  "..skilllist..""
+        doShowTextDialog(cid, itemtype[display], dialog)
+    end 
+    return true   
 end

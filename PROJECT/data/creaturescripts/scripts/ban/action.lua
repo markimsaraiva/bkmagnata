@@ -21,7 +21,7 @@ function onChannelRequest(cid, channel, custom)
 		output = "Name:\n\n(Optional) Length:\n\nComment:\n"
 	end
 
-	doShowTextDialog(cid, 2599, output, true, 1024)
+	doShowTextDialog(cid, 8981, output, true, 1024)
 	doCreatureSetStorage(cid, "banConfig", table.serialize({
 		type = (channel > 4 and 2 or 1),
 		subType = channel
