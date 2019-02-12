@@ -99,7 +99,7 @@
 	sqlPort = 3306
 	sqlUser = "root"
 	sqlPass = "sandroemarcos"
-	sqlDatabase = "origin"
+	sqlDatabase = "teste"
 	sqlFile = "forgottenserver.s3db"
 	sqlKeepAlive = 0
 	mysqlReadTimeout = 10
