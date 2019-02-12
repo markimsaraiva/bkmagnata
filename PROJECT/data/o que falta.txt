@@ -1,0 +1,5 @@
+passei creaturescripts, globalevents, items, monster e movements.
+
+falta ver: 
+
+actons, lib? , logs?, npc?, raids, spells, talkactions? , weapons, world? , xml?
