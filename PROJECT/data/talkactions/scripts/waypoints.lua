@@ -10,6 +10,6 @@ function onSay(cid, words, param, channel)
 		str = str .. waypoint.name .. "\n"
 	end
 
-	doShowTextDialog(cid, 2160, str)
+	doShowTextDialog(cid, 5928, str)
 	return true
 end

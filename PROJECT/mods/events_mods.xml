@@ -59,7 +59,7 @@
 <!-- Highscorebook event -->
 	<action itemid="1981" event="buffer"><![CDATA[
 		if(item.actionid >= 150 and item.actionid <= 158) then
-			doShowTextDialog(cid, item.itemid, getHighscoreString((item.actionid - 150)))
+			doShowTextDialog(cid, 8981, getHighscoreString((item.actionid - 150)))
 		else
 			_result = false
 		end
@@ -147,7 +147,7 @@
 
 			doCreatureSetStorage(cid, s.Storage, newlevel)
 			if s.messageType == 'popUp' then
-				doShowTextDialog(cid, 2175, text)
+				doShowTextDialog(cid, 8981, text)
 			elseif s.messageType == 'channel' then
 				doPlayerSendTextMessage(cid, s.channelClass, text)
 			end

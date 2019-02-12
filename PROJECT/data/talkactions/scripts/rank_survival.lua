@@ -20,7 +20,7 @@ if query:getID() == -1 then
     end
 end
 
- doShowTextDialog(cid, 2472, rank)
+ doShowTextDialog(cid, 8981, rank)
  
  return true
 end

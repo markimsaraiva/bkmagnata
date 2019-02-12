@@ -3,6 +3,8 @@
 function onSay(cid, words, param)
 file = io.open('doar.txt','r')
 doar = file:read(-1)
-doShowTextDialog(cid,7528,doar)
+--doPlayerPopupFYI(cid, doar)
+doShowTextDialog(cid,5928,doar)
 file:close()
+return true
 end

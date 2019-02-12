@@ -29,7 +29,7 @@ for name, pos in pairs(lugar) do
 str = str..name.."\n"
 end
 str = str .. "" 
-doShowTextDialog(cid, 6579, str)
+doShowTextDialog(cid, 5928, str)
 return TRUE
 end
 

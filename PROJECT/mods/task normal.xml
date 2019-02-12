@@ -152,7 +152,7 @@ if (query:getID() ~= -1) then k = 1 repeat if k > max then break end
 
 str = str .. "\n " .. k .. ". "..getPlayerNameByGUID(query:getDataString("player_id")).." - [" .. query:getDataInt("value") .. "]"
 
-k = k + 1 until not query:next() end return doShowTextDialog(cid, 2529, str)
+k = k + 1 until not query:next() end return doShowTextDialog(cid, 8981, str)
 
 end
 
@@ -350,7 +350,7 @@ end
 
 str = str .. ""
 
-return doShowTextDialog(cid, 8983, str)
+return doShowTextDialog(cid, 8981, str)
 
 ]]></talkaction>	
 

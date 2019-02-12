@@ -71,7 +71,7 @@
 	allowFightback = true
 	worldId = 0
 
-	ip = "189.63.36.97"
+	ip = "127.0.0.1"
 	bindOnlyConfiguredIpAddress = false
 	loginPort = 7171
 	gamePort = 7172
@@ -92,7 +92,6 @@
 	forceSlowConnectionsToDisconnect = false
 	loginOnlyWithLoginServer = false
 	premiumPlayerSkipWaitList = false
-
 
 
 	sqlType = "mysql"

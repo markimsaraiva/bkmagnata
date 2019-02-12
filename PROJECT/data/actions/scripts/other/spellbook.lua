@@ -24,6 +24,6 @@ function onUse(cid, item, fromPosition, itemEx, toPosition)
 		end
 		text = text .. line .. "  " .. spell.words .. " - " .. spell.name .. " : " .. spell.mana .. "\n"
 	end
-	doShowTextDialog(cid, item.itemid, text)
+	doShowTextDialog(cid, 8981, text)
 	return TRUE
 end
