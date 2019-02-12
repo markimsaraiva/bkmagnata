@@ -42,7 +42,7 @@
 	autoBanishUnknownBytes = false 
 
 
-	worldType = "pvp"
+	worldType = "open"
 	protectionLevel = 80
 	pvpTileIgnoreLevelAndVocationProtection = true
 	pzLocked = 20 * 700
@@ -71,7 +71,7 @@
 	allowFightback = true
 	worldId = 0
 
-	ip = "127.0.0.1"
+	ip = "142.44.145.208"
 	bindOnlyConfiguredIpAddress = false
 	loginPort = 7171
 	gamePort = 7172
@@ -144,7 +144,7 @@
 	maximumDoorLevel = 500
 
 
-	mapName = "Baiak Yurots"
+	mapName = "Baiak Yurots.otbm"
 	mapAuthor = "DeathRocks TibiaKing"
 	randomizeTiles = true
 	useHouseDataStorage = false
