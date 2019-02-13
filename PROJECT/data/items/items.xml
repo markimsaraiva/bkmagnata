@@ -12842,7 +12842,9 @@
 	<item fromid="7702" toid="7703" name="paper">
 		<attribute key="weight" value="500" />
 	</item>
-	<item id="7704" article="a" name="book">
+	<item id="7704" article="a" name="autoloot days">
+				<attribute key="description" value="use e vc ganhara  dias de autoloot! confira usando o comando { !autoloot }" />
+
 		<attribute key="weight" value="2000" />
 	</item>
 	<item id="7705" article="a" name="book">

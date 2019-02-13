@@ -80,7 +80,7 @@ function removeItemTable(cid, item)
 	return setPlayerStorageTable(cid, info.Storages[1], x)
 end
 function ShowItemsTabble(cid)
-	local n,str = 0,"[+] Auto Loot Commands [+]\nVOCE SO TERA SEU AUTOLOOT ATIVADO, QUANDO USAR O ITEM!\nVERIFIQUE OS SEUS DIAS RESTANTES LOGO ABAIXO\n!autoloot item name --> To add ou Remove item from list[ex: !autoloot dragon shield].\n!autoloot money --> To collect gold automatically.[ex: !autoloot gold]\n!autoloot clear --> To clear the list.\n!autoloot on/off --> To enable or disable the collecting of items in the system.\n\n[+] Auto Loot Info [+]\n\nSystem: "..(getPlayerStorageValue(cid, info.Storages[3]) >= 1 and "Activated" or "Disabled")..".\nTime: "..(getAutoLootTime(cid) > 0 and "VOCE TEM ["..getAutoLootDays(cid).."] DIAS DE AUTOLOOT--> ACABA EM "..os.date("%d/%m/%y %X", getAutoLootTime(cid)).."." or "VOCE NAO TEM DIAS DE AUTOLOOT! ADQUIRA O ITEM E USE!").."\nGold Collecting: "..(getPlayerStorageValue(cid, info.Storages[2]) > 0 and "Activated" or "Disabled")..".\nBalance Total: ["..getPlayerBalance(cid).."] gp's.\nMaximum Slots: ["..#getPlayerStorageTable(cid, info.Storages[1]).."/"..((vip.hasVip(cid) == true) and info.Max_Slots.premium or info.Max_Slots.free).."]\n\n[+] Auto Loot Slots [+]\n\n"
+	local n,str = 0,"VOCE SO TERA SEU AUTOLOOT ATIVADO, QUANDO USAR O ITEM!\n\nVERIFIQUE OS SEUS DIAS RESTANTES LOGO ABAIXO\n\n[+] Auto Loot Commands [+]\nn!autoloot item name --> To add ou Remove item from list[ex: !autoloot dragon shield].\n!autoloot money --> To collect gold automatically.[ex: !autoloot gold]\n!autoloot clear --> To clear the list.\n!autoloot on/off --> To enable or disable the collecting of items in the system.\n\n[+] Auto Loot Info [+]\n\nSystem: "..(getPlayerStorageValue(cid, info.Storages[3]) >= 1 and "Activated" or "Disabled")..".\nTime: "..(getAutoLootTime(cid) > 0 and "VOCE TEM ["..getAutoLootDays(cid).."] DIAS DE AUTOLOOT--> ACABA EM "..os.date("%d/%m/%y %X", getAutoLootTime(cid)).."." or "VOCE NAO TEM DIAS DE AUTOLOOT! ADQUIRA O ITEM E USE!").."\n\nGold Collecting: "..(getPlayerStorageValue(cid, info.Storages[2]) > 0 and "Activated" or "Disabled")..".\nBalance Total: ["..getPlayerBalance(cid).."] gp's.\nMaximum Slots: ["..#getPlayerStorageTable(cid, info.Storages[1]).."/"..((vip.hasVip(cid) == true) and info.Max_Slots.premium or info.Max_Slots.free).."]\n\n[+] Auto Loot Slots [+]\n\n"
 	for i = 1,#getPlayerStorageTable(cid, info.Storages[1]) do
 		n = n + 1
 		str = str.."Slot "..n.." - "..getItemNameById(getPlayerStorageTable(cid, info.Storages[1])[i]).."\n"
@@ -281,7 +281,7 @@ end
 
 doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE,not var and "you added the item "..palavra.." in the list" or "you removed the item "..palavra.." from the list")
 return true]]></talkaction>
-<action itemid="7703" event="script"><![CDATA[
+<action itemid="7704" event="script"><![CDATA[
 domodlib('Loot_func')
 function onUse(cid, item, fromPosition, itemEx, toPosition)
 	local days = 3
