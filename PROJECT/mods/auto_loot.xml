@@ -5,7 +5,7 @@ info = {
 	AutomaticDeposit = true,
 	BlockMonsters = {},
 	BlockItemsList = {2123,2515},
-	Max_Slots = {free = 3, premium = 6},
+	Max_Slots = {free = 2, premium = 6},
 	Storages = {27000,28001,28002}
 }
 function getAutoLootTime(cid)
