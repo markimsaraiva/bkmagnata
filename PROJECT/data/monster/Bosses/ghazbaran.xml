@@ -50,9 +50,7 @@
 		<immunity drunk="1"/>
 		<immunity invisible="1"/>
 	</immunities>
-	<summons maxSummons="4">
-		<summon name="Deathslicer" interval="2000" chance="100" max="4"/>
-	</summons>
+
 	<voices interval="5000" chance="30">
 		<voice sentence="COME HERE AND DIE!"/>
 		<voice sentence="COME AND GIVE ME SOME AMUSEMENT!" yell="1"/>
