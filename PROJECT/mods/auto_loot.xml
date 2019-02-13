@@ -213,7 +213,10 @@ end]]></event>
 <event type="kill" name="LootEventKIll" event="script"><![CDATA[
 domodlib('Loot_func')
 function onKill(cid, target, lastHit)
+		doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "hm")
 	if isPlayer(cid) and getAutoLootDays(cid) > 0 and getPlayerStorageValue(cid, info.Storages[3]) >= 1 and isMonster(target) and not isInArray(info.BlockMonsters, getCreatureName(target):lower()) then
+			doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "dois")
+
 		addEvent(corpseRetireItems, 0, cid ,getThingPosition(target))
 
 	end
