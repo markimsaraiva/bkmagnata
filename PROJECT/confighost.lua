@@ -71,7 +71,7 @@
 	allowFightback = true
 	worldId = 0
 
-	ip = "127.0.0.1"
+	ip = "142.44.145.208"
 	bindOnlyConfiguredIpAddress = false
 	loginPort = 7171
 	gamePort = 7172
@@ -98,7 +98,7 @@
 	sqlHost = "localhost"
 	sqlPort = 3306
 	sqlUser = "root"
-	sqlPass = "root"
+	sqlPass = "sandroemarcos"
 	sqlDatabase = "teste"
 	sqlFile = "forgottenserver.s3db"
 	sqlKeepAlive = 0
@@ -124,6 +124,9 @@
 	updateHighscoresAfterMinutes = 2
 
 
+	protectionTileLimit = 0 
+	houseTileLimit = 0
+	tileLimit = 0
 	buyableAndSellableHouses = true
 	houseNeedPremium = true
 	bedsRequirePremium = true
