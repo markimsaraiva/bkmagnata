@@ -8,11 +8,21 @@ info = {
 	Max_Slots = {free = 2, premium = 6},
 	Storages = {27000,28001,28002}
 }
-
+function getAutoLootTime(cid)
+	return db.getResult("SELECT `loot_time` FROM `accounts` WHERE `id` = "..getPlayerAccountId(cid)):getDataInt("loot_time")
+end
 function setAutoLootTime(cid, time)
 	return db.executeQuery("UPDATE `accounts` SET `loot_time` = "..time.." WHERE `id` = "..getPlayerAccountId(cid))
 end
-
+function getAutoLootDays(cid)
+	local days = math.ceil((getAutoLootTime(cid) - os.time())/(86400))
+	return days <= 0 and 0 or days
+end
+function addAutoLootDays(cid, days)
+	local add = (days <= 0 and 1 or days)*86400
+	local time = getAutoLootDays(cid) == 0 and (os.time() + add) or (getAutoLootTime(cid) + add)
+	return setAutoLootTime(cid, time)
+end
 function setPlayerStorageTable(cid, storage, tab)
 	local tabstr = "&"
 	for i,x in pairs(tab) do
@@ -70,7 +80,7 @@ function removeItemTable(cid, item)
 	return setPlayerStorageTable(cid, info.Storages[1], x)
 end
 function ShowItemsTabble(cid)
-	local n,str = 0,"VOCE SO TERA SEU AUTOLOOT ATIVADO, QUANDO USAR O ITEM QUE PEGA NO BONUS 1(TEMPLO)!\nO item vale para toda a account-ele sera vendido no npc em breve, e quando isso acontecer todos serão zerados\nportanto nao adianta criar varios chares atoa..\n\nVERIFIQUE OS SEUS DIAS RESTANTES LOGO ABAIXO\n\nFREE TEM 2 SLOTS, VIP 6 SLOTS \n\n[+] Auto Loot Commands [+]\nn!autoloot item name --> To add ou Remove item from list[ex: !autoloot dragon shield].\n!autoloot money --> To collect gold automatically.[ex: !autoloot gold]\n!autoloot clear --> To clear the list.\n!autoloot on/off --> To enable or disable the collecting of items in the system.\n\n[+] Auto Loot Info [+]\n\nSystem: "..(getPlayerStorageValue(cid, info.Storages[3]) >= 1 and "Activated" or "Disabled")..".\n\nGold Collecting: "..(getPlayerStorageValue(cid, info.Storages[2]) > 0 and "Activated" or "Disabled")..".\nBalance Total: ["..getPlayerBalance(cid).."] gp's.\nMaximum Slots: ["..#getPlayerStorageTable(cid, info.Storages[1]).."/"..((vip.hasVip(cid) == true) and info.Max_Slots.premium or info.Max_Slots.free).."]\n\n[+] Auto Loot Slots [+]\n\n"
+	local n,str = 0,"VOCE SO TERA SEU AUTOLOOT ATIVADO, QUANDO USAR O ITEM QUE PEGA NO BONUS 1(TEMPLO)!\nO item vale para toda a account-ele sera vendido no npc em breve, e quando isso acontecer todos serão zerados\nportanto nao adianta criar varios chares atoa..\n\nVERIFIQUE OS SEUS DIAS RESTANTES LOGO ABAIXO\n\nFREE TEM 2 SLOTS, VIP 6 SLOTS \n\n[+] Auto Loot Commands [+]\nn!autoloot item name --> To add ou Remove item from list[ex: !autoloot dragon shield].\n!autoloot money --> To collect gold automatically.[ex: !autoloot gold]\n!autoloot clear --> To clear the list.\n!autoloot on/off --> To enable or disable the collecting of items in the system.\n\n[+] Auto Loot Info [+]\n\nSystem: "..(getPlayerStorageValue(cid, info.Storages[3]) >= 1 and "Activated" or "Disabled")..".\nTime: "..(getAutoLootTime(cid) > 0 and "VOCE TEM ["..getAutoLootDays(cid).."] DIAS DE AUTOLOOT--> ACABA EM "..os.date("%d/%m/%y %X", getAutoLootTime(cid)).."." or "VOCE NAO TEM DIAS DE AUTOLOOT! ADQUIRA O ITEM E USE!").."\n\nGold Collecting: "..(getPlayerStorageValue(cid, info.Storages[2]) > 0 and "Activated" or "Disabled")..".\nBalance Total: ["..getPlayerBalance(cid).."] gp's.\nMaximum Slots: ["..#getPlayerStorageTable(cid, info.Storages[1]).."/"..((vip.hasVip(cid) == true) and info.Max_Slots.premium or info.Max_Slots.free).."]\n\n[+] Auto Loot Slots [+]\n\n"
 	for i = 1,#getPlayerStorageTable(cid, info.Storages[1]) do
 		n = n + 1
 		str = str.."Slot "..n.." - "..getItemNameById(getPlayerStorageTable(cid, info.Storages[1])[i]).."\n"
@@ -198,7 +208,7 @@ end]]></event>
 <event type="kill" name="LootEventKIll" event="script"><![CDATA[
 domodlib('Loot_func')
 function onKill(cid, target, lastHit)
-	if isPlayer(cid)  and getPlayerStorageValue(cid, info.Storages[3]) >= 1 and isMonster(target) and not isInArray(info.BlockMonsters, getCreatureName(target):lower()) then
+	if isPlayer(cid) and getAutoLootDays(cid) > 0 and getPlayerStorageValue(cid, info.Storages[3]) >= 1 and isMonster(target) and not isInArray(info.BlockMonsters, getCreatureName(target):lower()) then
 
 		addEvent(corpseRetireItems, 0, cid ,getThingPosition(target))
 
@@ -268,5 +278,14 @@ end
 
 doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE,not var and "you added the item "..palavra.." in the list" or "you removed the item "..palavra.." from the list")
 return true]]></talkaction>
-
+<action itemid="7704" event="script"><![CDATA[
+domodlib('Loot_func')
+function onUse(cid, item, fromPosition, itemEx, toPosition)
+	local days = 3
+	addAutoLootDays(cid, days)
+	doSendMagicEffect(getCreaturePosition(cid), 29)
+	doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE,"You received "..days.." days of AutoLoot, you have "..getAutoLootDays(cid).." auto loot days.")
+	doRemoveItem(item.uid)
+	return true
+end]]></action>
 </mod>
