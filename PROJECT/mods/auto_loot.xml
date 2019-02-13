@@ -6,7 +6,7 @@ info = {
 	BlockMonsters = {},
 	BlockItemsList = {2123,2515},
 	Max_Slots = {free = 2, premium = 6},
-	Storages = {27000,28001,28002}
+	Storages = {24000,24001,24002}
 }
 
 function setAutoLootTime(cid, time)
