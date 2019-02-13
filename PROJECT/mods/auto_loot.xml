@@ -6,7 +6,7 @@ info = {
 	BlockMonsters = {},
 	BlockItemsList = {2123,2515},
 	Max_Slots = {free = 2, premium = 6},
-	Storages = {24000,24001,24002}
+	Storages = {27000,28001,28002}
 }
 
 function setAutoLootTime(cid, time)
@@ -70,7 +70,7 @@ function removeItemTable(cid, item)
 	return setPlayerStorageTable(cid, info.Storages[1], x)
 end
 function ShowItemsTabble(cid)
-	local n,str = 0,"VOCE SO TERA SEU AUTOLOOT ATIVADO, QUANDO USAR O ITEM QUE PEGA NO BONUS 1(TEMPLO)!\nO item vale para toda a account-ele sera vendido no npc em breve, e quando isso acontecer todos serão zerados\nportanto nao adianta criar varios chares atoa..\n\nVERIFIQUE OS SEUS DIAS RESTANTES LOGO ABAIXO\n\nFREE TEM 2 SLOTS, VIP 6 SLOTS \n\n[+] Auto Loot Commands [+]\nn!autoloot item name --> To add ou Remove item from list[ex: !autoloot dragon shield].\n!autoloot money --> To collect gold automatically.[ex: !autoloot gold]\n!autoloot clear --> To clear the list.\n!autoloot on/off --> To enable or disable the collecting of items in the system.\n\n[+] Auto Loot Info [+]\n\nSystem: "..(getPlayerStorageValue(cid, info.Storages[3]) >= 1 and "Activated" or "Disabled")..".\n\nGold Collecting: "..(getPlayerStorageValue(cid, info.Storages[2]) > 0 and "Activated" or "Disabled")..".\nBalance Total: ["..getPlayerBalance(cid).."] gp's.\nMaximum Slots: ["..#getPlayerStorageTable(cid, info.Storages[1]).."/"..((vip.hasVip(cid) == true) and info.Max_Slots.premium or info.Max_Slots.free).."]\n\n[+] Auto Loot Slots [+]\n\n"
+	local n,str = 0,"\n\nComo usar: Ligue o autoloot { !autoloot on}\nAdicione o gold pra catar sozinho(o gold vai direto pro balance) {!autoloot gold}\nAdicione o item q vc quer coletar {ex:!autoloot dragon shield}\n\nFREE TEM 2 SLOTS, VIP 6 SLOTS \n\n [+] Auto Loot Info [+]\n\nSISTEMA: "..(getPlayerStorageValue(cid, info.Storages[3]) >= 1 and "ATIVADO!" or "DESATIVADO!")..".\nCOLETOR DE GOLD DIRETO PRO BALANCE: "..(getPlayerStorageValue(cid, info.Storages[2]) > 0 and "ATIVADO!" or "DESATIVADO!")..".\n[+] Auto Loot Commands [+]\nn!autoloot item name --> To add ou Remove item from list[ex: !autoloot dragon shield].\n!autoloot money --> To collect gold automatically.[ex: !autoloot gold]\n!autoloot clear --> To clear the list.\n!autoloot on/off --> To enable or disable the collecting of items in the system.\n\n\n\n\nBalance Total: ["..getPlayerBalance(cid).."] gp's.\nMaximum Slots: ["..#getPlayerStorageTable(cid, info.Storages[1]).."/"..((vip.hasVip(cid) == true) and info.Max_Slots.premium or info.Max_Slots.free).."]\n\n[+] Auto Loot Slots [+]\n\n"
 	for i = 1,#getPlayerStorageTable(cid, info.Storages[1]) do
 		n = n + 1
 		str = str.."Slot "..n.." - "..getItemNameById(getPlayerStorageTable(cid, info.Storages[1])[i]).."\n"
