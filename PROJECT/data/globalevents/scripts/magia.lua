@@ -60,7 +60,10 @@ local positions = {
     ["Bonus 1"]    = {pos = {x = 156, y = 50, z = 7}, color = {210, 210}, effect = {55}},
     ["Bonus 2"]    = {pos = {x = 154, y = 50, z = 7}, color = {210, 210}, effect = {55}},
     ["BossEvent"]    = {pos = {x = 161, y = 55, z = 7}, color = {210, 210}, effect = {41, 43}},
-    ["Castle24h"]    = {pos = {x = 164, y = 55, z = 7}, color = {210, 210}, effect = {34}}
+    ["Castle24h"]    = {pos = {x = 164, y = 55, z = 7}, color = {210, 210}, effect = {34}},
+    ["!autoloot"]    = {pos = {x = 151, y = 51, z = 7}, color = {210, 210}, effect = {34}}
+    ["funfando"]    = {pos = {x = 151, y = 52, z = 7}, color = {210, 210}, effect = {34}}
+
 }
 
 
