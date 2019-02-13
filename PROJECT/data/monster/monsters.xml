@@ -728,7 +728,7 @@
       
          <!-- Alissow Monsters -->
 	<monster name="morgaroth girl" file="Alissow/morgaroth girl.xml"/>
-      <monster name="Gandalf Branco" file="Alissow/Gandalf Branco.xml"/>
+      <monster name="Gandalf Branco" file="Alissow/gandalf branco.xml"/>
       <monster name="Boss Da Promotion" file="Alissow/Boss Da Promotion.xml"/>
 	<monster name="Baron Of The Room" file="Alissow/Baron Of The Room.xml"/>
 	<monster name="Breeze" file="Alissow/Breeze.xml"/>

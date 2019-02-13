@@ -124,6 +124,9 @@
 	updateHighscoresAfterMinutes = 2
 
 
+	protectionTileLimit = 0 
+	houseTileLimit = 0
+	tileLimit = 0
 	buyableAndSellableHouses = true
 	houseNeedPremium = true
 	bedsRequirePremium = true
