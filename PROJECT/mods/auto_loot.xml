@@ -165,6 +165,7 @@ function AutomaticDeposit(cid,item,n)
 	return doPlayerDepositMoney(cid, deposit)
 end
 function corpseRetireItems(cid, pos)
+	doPlayerSendTextMessage(cid,18,"hm")
 	local check = false
 	for i = 0, 255 do
 		pos.stackpos = i
