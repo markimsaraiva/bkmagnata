@@ -13,12 +13,12 @@
 	displayGamemastersWithOnlineCommand = false
 
 	-- MySql
-	sqlType = "sqlite"
+	sqlType = "mysql"
 	sqlHost = "127.0.0.1"
 	sqlPort = 3306
 	sqlUser = "root"
-	sqlPass = ""
-	sqlDatabase = ""
+	sqlPass = "sandroemarcos"
+	sqlDatabase = "teste"
 	sqlFile = "schemas/otxserver.s3db"
 	sqlKeepAlive = 0
 	mysqlReadTimeout = 10
@@ -28,7 +28,7 @@
 
 	-- World / Ip / Port
 	worldId = 0
-	ip = "127.0.0.1"
+	ip = "142.44.145.208"
 	worldType = "open"
 	bindOnlyGlobalAddress = false
 	loginPort = 7171
@@ -267,7 +267,7 @@
 	houseDataStorage = "binary-tilebased"
 	storeTrash = true
 	cleanProtectedZones = true
-	mapName = "forgotten.otbm"
+	mapName = "Baiak Yurots.otbm"
 		-- For Windows(compiled with MSVC) and Linux use:
 		-- OTX Server use default GroundCache
 		-- GroundCache mode save memory: __GROUND_CACHE__
